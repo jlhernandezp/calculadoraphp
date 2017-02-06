@@ -18,10 +18,13 @@ abstract class Operacion {
     protected $operacion;
     
     public function __construct($operacion) {
-        $token = '[\+|\-|\*|\:|\/]';
+        // $token = '[\+|\-|\*|\:|\/]';
+        $token = '[\+|\-|\*|\:]';
+        
         $this->operando1 = strtok($operacion, $token);
         $this->operando2 = strtok($token);
-        $this->operacion = substr($operacion, strlen($this->operando1),strlen($this->operando1)-1);
+        $this->operacion = substr($operacion, strlen($this->operando1),1);
+        
  
     }
     
@@ -36,5 +39,24 @@ abstract class Operacion {
     public function getOperador(){
         return $this->operacion;
     }
-    
+    /** comprueba que la operacion es racional o no
+     * @return String  Racional si la operación es racional,
+     *                 Real en cualquier otro caso   
+     */
+    public function tipoDeOperacion($operacion){    
+        $token = '[\+|\-|\*|\:]';
+        
+        $op1 = strtok($operacion, $token);
+        $op2 = strtok($token);
+        $oper = substr($operacion, strlen($op1),1);
+        
+        if ($oper==":"){
+            return "Racional";
+        }
+        $needle = "/";
+        if (strpos($op1,$needle)!==FALSE||strpos($op2,$needle)!==FALSE){
+            return "Racional";
+        }
+        return "Real".$op1;
+    }
 }

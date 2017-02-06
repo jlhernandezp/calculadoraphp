@@ -19,12 +19,14 @@ and open the template in the editor.
         });       
         
         if (isset($_POST['enviar'])){
+            echo '<div>Operación '.Operacion::tipoDeOperacion($_POST['operacion']).'</div>';
             
             $resultado = new OperacionReal($_POST['operacion']);
             echo '<div><fieldset id="rtdo"><legend>Resultado</legend>';
             echo '<div>Operando1: '.$resultado->getOperando1().'</div>';
             echo '<div>Operando2: '.$resultado->getOperando2().'</div>';
             echo '<div>Operador: '.$resultado->getOperador().'</div>';
+            echo '<div>Operación: '.$resultado->tipoDeOperacion($_POST['operacion']).'</div>';
             echo '</fieldset></div>';
         }
         ?>
