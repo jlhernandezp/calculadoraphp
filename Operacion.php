@@ -59,4 +59,5 @@ abstract class Operacion {
         }
         return "Real".$op1;
     }
+    
 }
