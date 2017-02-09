@@ -42,20 +42,20 @@ class OperacionRacional extends Operacion {
         
         switch ($this->operacion) {
             case "+":
-                return suma($numerador1,$denominador1,$numerador2,$denominador2);
+                return $this->suma($numerador1,$denominador1,$numerador2,$denominador2);
                 break;
             case "-":
-                return resta($numerador1,$denominador1,$numerador2,$denominador2);
+                return $this->resta($numerador1,$denominador1,$numerador2,$denominador2);
                 break;
             case "*":
                 return $this->multiplica($numerador1,$denominador1,$numerador2,$denominador2);
                 break;
             case ":":
-                return divide($numerador1,$denominador1,$numerador2,$denominador2);
+                return $this->divide($numerador1,$denominador1,$numerador2,$denominador2);
                 break;
         }
-       echo "Operacion Racional".$numerador1." ".$denominador1;
-       echo "Operacion Racional".$numerador2." ".$denominador2;
+      // echo "Operacion Racional".$numerador1." ".$denominador1;
+      // echo "Operacion Racional".$numerador2." ".$denominador2;
   
     }
     
@@ -66,4 +66,29 @@ class OperacionRacional extends Operacion {
         
         return $numerador/$denominador;
     }
+    
+    public function divide($numerador1,$denominador1,$numerador2,$denominador2) {
+        
+        $numerador = $numerador1*$denominador2;
+        $denominador = $denominador1*$numerador2;
+        
+        return $numerador/$denominador;
+    }
+    
+    public function suma($numerador1,$denominador1,$numerador2,$denominador2) {
+        
+        $numerador = ($numerador1*$denominador2) + ($numerador2 * $denominador1);
+        $denominador = $denominador1 * $denominador2;
+        echo $numerador."/".$denominador;
+        return $numerador/$denominador;
+    }
+
+    public function resta($numerador1,$denominador1,$numerador2,$denominador2) {
+        
+        $numerador = ($numerador1*$denominador2) - ($numerador2 * $denominador1);
+        $denominador = $denominador1 * $denominador2;
+        echo $numerador."/".$denominador;
+        return $numerador/$denominador;
+    }
+    
 }
